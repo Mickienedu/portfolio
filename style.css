@@ -344,6 +344,12 @@ form .btn2{
     margin-top: 20px;
     cursor: pointer;
 }
+/* the arrow to back to header */
+.header-arrow a i{
+    margin-top: 15px;
+    color: white;
+    font-size: 25px;
+}
 .copyright{
     width: 100%;
     text-align: center;
@@ -557,6 +563,23 @@ form .btn2{
     #about{
         margin-top: -7rem;
     }
+    /* btn */
+    .container .btn{
+        padding: 14px 20px;
+        font-size: 16px;  
+    }
+    .contact-left .btn{
+        padding: 14px 20px;
+        font-size: 16px;
+    }
+    form .btn2{
+    padding: 14px 20px;
+    font-size: 16px;
+}
+/* services cards */
+.services-list{
+    margin-top: 10px;
+}
    
 }
 /* #msg{
