@@ -33,12 +33,13 @@ nav{
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-top: -3rem;
+    margin-top: -0.5rem;
 }
 
 
 .logo{
     width: 200px;
+    height: 40px;
 }
 nav ul li{
     display: inline-block;
