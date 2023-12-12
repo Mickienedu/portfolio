@@ -113,6 +113,13 @@ nav .fas{
     color: #ff004f;
 }
 
+/* GENERAL ELEMENTS */
+.section {
+    padding: 15rem 3rem;
+    border-top: 1px solid #393737;
+    transition: transform 1s, opacity 1s;
+  }
+
  /* 198. Revealing Elements on Scroll */
  .section--hidden {
     opacity: 0;

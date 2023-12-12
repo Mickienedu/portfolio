@@ -46,6 +46,41 @@ form.addEventListener('submit', e => {
     .catch(error => console.error('Error!', error.message))
 })
 
+// // 1. Add event listener to common parent element
+// // 2. Determine what element originated the event
+document.querySelector('#sidemenu').addEventListener('click', function (e) {
+  e.preventDefault();
+
+  // MATCHING STRATEGY 
+  if(e.target.classList.contains('nav-link')) {
+    const id = e.target.getAttribute('href');
+    // console.log(id);
+     document.querySelector(id).scrollIntoView({ behavior: 'smooth'});
+    }
+});
+
+
+
+
+// / using this to implement our sticky navigation 
+const header = document.querySelector('.header');
+const navHeight = container.getBoundingClientRect().height;
+
+const stickyNav = function(entries) { 
+  const [entry] = entries;
+//   console.log(entry);
+
+  //adding the new className 'sticky'
+  if(entry.isIntersecting) container.classList.add('sticky');
+  else container.classList.remove('sticky');
+}
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight}px`,
+});
+headerObserver.observe(header);
 
 // 198. Revealing Elements on Scroll
 // reveal element as we scroll to them 
@@ -68,26 +103,4 @@ const sectionObserver = new IntersectionObserver(revealSection, {
 allSections.forEach(function(section) {
   sectionObserver.observe(section);
   section.classList.add('section--hidden');
-})
-
-
-
-// / using this to implement our sticky navigation 
-const header = document.querySelector('.header');
-const navHeight = container.getBoundingClientRect().height;
-
-const stickyNav = function(entries) { 
-  const [entry] = entries;
-//   console.log(entry);
-
-  //adding the new className 'sticky'
-  if(entry.isIntersecting) container.classList.add('sticky');
-  else container.classList.remove('sticky');
-}
-
-const headerObserver = new IntersectionObserver(stickyNav, {
-  root: null,
-  threshold: 0,
-  rootMargin: `-${navHeight}px`,
 });
-headerObserver.observe(header)
