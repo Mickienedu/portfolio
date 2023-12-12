@@ -1,4 +1,6 @@
 // the javascript for the portfolio
+'use strict';
+const container = document.querySelector('.container');
 
 let tablinks = document.getElementsByClassName("tab-links"); /*2nd, the completion of the onclick events for tablinks and contents */
 let tabcontents = document.getElementsByClassName("tab-contents");/*3rd,  */
@@ -43,3 +45,49 @@ form.addEventListener('submit', e => {
     })
     .catch(error => console.error('Error!', error.message))
 })
+
+
+// 198. Revealing Elements on Scroll
+// reveal element as we scroll to them 
+// reveal sections
+const allSections = document.querySelectorAll('.section')
+
+const revealSection = function(entries, observer) {
+  const [entry] = entries;
+//   console.log(entry);
+
+  if(!entry.isIntersecting) return;
+  entry.target.classList.remove('section--hidden');
+  observer.unobserve(entry.target);
+}
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.15,
+})
+allSections.forEach(function(section) {
+  sectionObserver.observe(section);
+  section.classList.add('section--hidden');
+})
+
+
+
+// / using this to implement our sticky navigation 
+const header = document.querySelector('.header');
+const navHeight = container.getBoundingClientRect().height;
+
+const stickyNav = function(entries) { 
+  const [entry] = entries;
+//   console.log(entry);
+
+  //adding the new className 'sticky'
+  if(entry.isIntersecting) container.classList.add('sticky');
+  else container.classList.remove('sticky');
+}
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight}px`,
+});
+headerObserver.observe(header)
