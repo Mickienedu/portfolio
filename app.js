@@ -1,5 +1,5 @@
 // the javascript for the portfolio
-'use strict';
+// 'use strict';
 const container = document.querySelector('.container');
 
 let tablinks = document.getElementsByClassName("tab-links"); /*2nd, the completion of the onclick events for tablinks and contents */
